@@ -8,20 +8,20 @@ start:
     jmp 0x7c0:step2 
 
 step2: 
-    cli : Clear Interrupts 
+    cli ; Clear Interrupts 
     mov ax, 0x7c0 
     mov ds, ax 
     mov es, ax 
     mov ax, 0x00 
     mov ss, ax 
     mov sp, 0x7c00
-    sti : Enables Interrupts 
+    sti ; Enables Interrupts 
 
-    mov ah, 2 : Read Sector Command 
-    mov al, 1 : One Sector To Read 
-    mov ch, 0 : Cylinder Low Eight Bits 
-    mov cl, 2 : Read Sector Two 
-    mov dh, 0 : Read number
+    mov ah, 2 ; Read Sector Command 
+    mov al, 1 ; One Sector To Read 
+    mov ch, 0 ; Cylinder Low Eight Bits 
+    mov cl, 2 ; Read Sector Two 
+    mov dh, 0 ; Read number
     mov bx, buffer
     int 0x13
     jc error
